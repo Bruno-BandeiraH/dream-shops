@@ -1,14 +1,16 @@
 package com.brunobandeira.dreamshops.service.product;
 
 import com.brunobandeira.dreamshops.model.Product;
+import com.brunobandeira.dreamshops.request.AddProductRequest;
+import com.brunobandeira.dreamshops.request.ProductUpdateRequest;
 
 import java.util.List;
 
 public interface IProductService {
-    Product addProduct(Product product);
     Product getProductById(Long id);
+    Product addProduct(AddProductRequest product);
+    Product updateProduct(ProductUpdateRequest product, Long productId);
     void deleteById(Long id);
-    void updateProduct(Product product, Long productId);
     List<Product> getAllProducts();
     List<Product> getProductsByCategory(String category);
     List<Product> getProductsByBrand(String brand);
