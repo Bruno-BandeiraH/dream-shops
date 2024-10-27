@@ -3,7 +3,6 @@ package com.brunobandeira.dreamshops.controller;
 import com.brunobandeira.dreamshops.dto.ImageDto;
 import com.brunobandeira.dreamshops.exceptions.ResourceNotFoundException;
 import com.brunobandeira.dreamshops.model.Image;
-import com.brunobandeira.dreamshops.model.Product;
 import com.brunobandeira.dreamshops.response.ApiResponse;
 import com.brunobandeira.dreamshops.service.image.IImageService;
 import lombok.RequiredArgsConstructor;
