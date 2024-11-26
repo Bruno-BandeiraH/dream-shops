@@ -1,6 +1,6 @@
 package com.brunobandeira.dreamshops.service.product;
 
-import com.brunobandeira.dreamshops.exceptions.ProductNotFoundException;
+import com.brunobandeira.dreamshops.exceptions.ResourceNotFoundException;
 import com.brunobandeira.dreamshops.model.Category;
 import com.brunobandeira.dreamshops.model.Product;
 import com.brunobandeira.dreamshops.repository.CategoryRepository;
@@ -52,14 +52,14 @@ public class ProductService implements IProductService{
     @Override
     public Product getProductById(Long id) {
         return productRepository.findById(id)
-            .orElseThrow(()-> new ProductNotFoundException("Product not found!"));
+            .orElseThrow(()-> new ResourceNotFoundException("Product not found!"));
     }
 
     @Override
     public void deleteById(Long id) {
         productRepository.findById(id)
             .ifPresentOrElse(productRepository::delete,
-                () -> {throw new ProductNotFoundException("ProductNot found!");});
+                () -> {throw new ResourceNotFoundException("Product not found!");});
     }
 
     @Override
@@ -67,7 +67,7 @@ public class ProductService implements IProductService{
         return  productRepository.findById(productId)
             .map(existingProduct -> updateExistingProduct(existingProduct,request))
             .map(productRepository::save)
-            .orElseThrow(() -> new ProductNotFoundException("Product not found!"));
+            .orElseThrow(() -> new ResourceNotFoundException("Product not found!"));
     }
 
     private Product updateExistingProduct(Product existingProduct, ProductUpdateRequest request) {
